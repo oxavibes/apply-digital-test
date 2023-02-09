@@ -1,17 +1,51 @@
-:root {
-  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
-  line-height: 1.5;
-  font-weight: 400;
-
-  color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
-
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  -webkit-text-size-adjust: 100%;
+*,
+*::after,
+*::before {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
+html {
+  font-size: 62.5%;
 
+  /* @include respond(big-desktop) {
+    font-size: 75%;
+  }
+
+  @include respond(tab-small) {
+    font-size: 56.25%;
+  } */
+}
+
+body {
+  box-sizing: inherit;
+  line-height: 1.5;
+  font-weight: 400;
+  font-size: 1.6rem;
+  font-family: "Baskervville", Helvetica, Arial, sans-serif;
+}
+
+h1 {
+  line-height: 1.125;
+}
+
+h2 {
+  line-height: 1.25;
+}
+
+.container {
+  /* padding: 3rem 0; */
+  max-width: 114rem;
+  margin: 0 auto;
+
+  /* @include respond(tab-port) {
+    padding: 3rem;
+  }
+
+  @include respond(big-desktop) {
+    max-width: 120rem;
+  } */
+}
+
+//Header
