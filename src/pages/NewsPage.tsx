@@ -26,6 +26,7 @@ export default function NewsPage() {
         <>
           <section className="news-selector">
             <select className="news-select">
+              <option value="">Select your news</option>
               <option value="angular"> Angular</option>
               <option value="react">React</option>
               <option value="vue">Vue</option>
