@@ -1,8 +1,8 @@
 import { Icon } from "@iconify/react";
 
-import "./AppNewsBox.css";
+import "./NewsBox.css";
 
-export default function AppNewsBox() {
+export default function NewsBox() {
   return (
     <div className="news-box">
       <div className="news-box__body">

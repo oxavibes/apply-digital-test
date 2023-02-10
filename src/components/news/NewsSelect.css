@@ -1,0 +1,19 @@
+.news-select {
+  all: unset;
+
+  box-sizing: content-box;
+
+  width: 100%;
+  max-width: 240px;
+  padding: 4px 12px;
+  border-radius: 4px;
+  border: solid 1px #2e2e2e;
+  font-size: 1.4rem;
+
+  color: #343434;
+  font-family: "Roboto", sans-serif;
+  font-weight: 500;
+
+  background: url("https://api.iconify.design/material-symbols/keyboard-arrow-down.svg") white no-repeat
+    calc(100% - 10px);
+}

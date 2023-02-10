@@ -1,6 +1,7 @@
 import { useState } from "react";
 
-import AppNewsBox from "../components/common/AppNewsBox";
+import NewsBox from "../components/news/NewsBox";
+import NewsSelect from "../components/news/NewsSelect";
 
 import "./NewsPage.css";
 
@@ -23,39 +24,23 @@ export default function NewsPage() {
       </div>
 
       {activeTab === "all" && (
-        <>
-          <section className="news-selector">
-            <select className="news-select">
-              <option value="" selected disabled hidden>
-                Select your news
-              </option>
-              <option value="angular"> Angular</option>
-              <option value="react">React</option>
-              <option value="vue">Vue</option>
-            </select>
-          </section>
-
-          <section className="news-list">
-            <div className="news-list__container"></div>
-            <p className="news-list__no-data">There is no data to show</p>
-          </section>
-        </>
-      )}
-
-      {activeTab === "favs" && (
-        <section className="news-list">
-          <div className="news-list__container">
-            <AppNewsBox />
-            <AppNewsBox />
-            <AppNewsBox />
-            <AppNewsBox />
-            <AppNewsBox />
-            <AppNewsBox />
-            <AppNewsBox />
-            <AppNewsBox />
-          </div>
+        <section className="news-selector">
+          <NewsSelect></NewsSelect>
         </section>
       )}
+
+      <section className="news-list">
+        <div className="news-list__container">
+          <NewsBox />
+          <NewsBox />
+          <NewsBox />
+          <NewsBox />
+          <NewsBox />
+          <NewsBox />
+          <NewsBox />
+          <NewsBox />
+        </div>
+      </section>
     </div>
   );
 }

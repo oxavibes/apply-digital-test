@@ -25,33 +25,17 @@
   padding: 3px;
 }
 
+.tabs__ul li:hover {
+  cursor: pointer;
+}
+
 .tabs__ul .tabs__nav-active {
   color: #1797ff;
   border: solid 1px #1797ff;
 }
 
 .news-selector {
-  margin-bottom: 38px;
-}
-
-.news-select {
-  all: unset;
-
-  box-sizing: content-box;
-
-  width: 100%;
-  max-width: 240px;
-  padding: 4px 12px;
-  border-radius: 4px;
-  border: solid 1px #2e2e2e;
-  font-size: 1.4rem;
-
-  color: #343434;
-  font-family: "Roboto", sans-serif;
-  font-weight: 500;
-
-  background: url("https://api.iconify.design/material-symbols/keyboard-arrow-down.svg") white no-repeat
-    calc(100% - 10px);
+  padding-bottom: 38px;
 }
 
 .news-list {
