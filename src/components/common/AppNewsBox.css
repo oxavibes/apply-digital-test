@@ -59,6 +59,8 @@
   cursor: pointer;
 }
 
+.news-box__button:active {
+}
+
 .news-box__button:focus {
-  outline: 1px solid #dd0031;
 }

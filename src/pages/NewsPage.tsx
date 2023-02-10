@@ -1,11 +1,28 @@
+import { useState } from "react";
+
 import AppNewsBox from "../components/common/AppNewsBox";
 
 import "./NewsPage.css";
 
 export default function NewsPage() {
+  const [activeTab, setActiveTab] = useState("all");
+
   return (
     <div className="container">
-      <main>
+      <div className="tabs">
+        <nav className="tabs__nav">
+          <ul className="tabs__ul">
+            <li className={activeTab === "all" ? "tabs__nav-active" : ""} onClick={() => setActiveTab("all")}>
+              All
+            </li>
+            <li className={activeTab === "favs" ? "tabs__nav-active" : ""} onClick={() => setActiveTab("favs")}>
+              My favs
+            </li>
+          </ul>
+        </nav>
+      </div>
+
+      {activeTab === "all" && (
         <section className="news-selector">
           <select className="news-select">
             <option value="">Select your news</option>
@@ -14,7 +31,9 @@ export default function NewsPage() {
             <option value="vue">Vue</option>
           </select>
         </section>
+      )}
 
+      {activeTab === "favs" && (
         <section className="news-list">
           <div className="news-list-container">
             <AppNewsBox />
@@ -27,7 +46,7 @@ export default function NewsPage() {
             <AppNewsBox />
           </div>
         </section>
-      </main>
+      )}
     </div>
   );
 }

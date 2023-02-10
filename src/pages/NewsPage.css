@@ -1,3 +1,36 @@
+.tabs {
+  display: flex;
+  margin-bottom: 6.3rem;
+}
+
+.tabs__nav {
+  margin: auto;
+}
+
+.tabs__ul {
+  display: flex;
+}
+
+.tabs__ul li {
+  border-radius: 2px;
+  border: solid 1px #d6d6d6;
+
+  font-family: "Roboto", sans-serif;
+  font-size: 1.6rem;
+
+  width: 98px;
+  max-height: 31px;
+
+  text-align: center;
+
+  padding: 3px;
+}
+
+.tabs__ul .tabs__nav-active {
+  color: #1797ff;
+  border: solid 1px #1797ff;
+}
+
 .news-selector {
   margin-bottom: 38px;
 }
