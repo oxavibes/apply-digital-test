@@ -35,17 +35,6 @@ h2 {
 }
 
 .container {
-  /* padding: 3rem 0; */
   max-width: 114rem;
   margin: 0 auto;
-
-  /* @include respond(tab-port) {
-    padding: 3rem;
-  }
-
-  @include respond(big-desktop) {
-    max-width: 120rem;
-  } */
 }
-
-//Header

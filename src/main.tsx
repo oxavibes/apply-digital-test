@@ -5,6 +5,7 @@ import App from "./App";
 
 import "./styles/reset.css";
 import "./styles/index.css";
+import "./styles/media-queries.css";
 
 ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
   <React.StrictMode>

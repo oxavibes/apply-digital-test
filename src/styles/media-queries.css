@@ -1,0 +1,100 @@
+/*
+1em = 16px
+
+MEDIA QUERY MANAGER
+[0 - 600]      Phone
+[600 - 900]    Tablet portrait
+[900 - 1200]   Tablet landscape
+[1440 - 1800]  is where our normal styles apply
+[1800 - +]     Big desktop
+
+$breakpoint arguement choices:
+- phone
+- tab-port
+- tab-land
+- big-desktop
+
+Media queries write order: 
+1) Base
+2) Typography
+3) General layout
+4) Grid 
+5) Page layout
+6) Components
+
+*/
+
+/* 1800px */
+@media only screen and (min-width: 112.5em) {
+  html {
+    font-size: 75%;
+  }
+
+  .container {
+    max-width: 120rem;
+  }
+}
+
+/* 1440px */
+@media only screen and (min-width: 90em) {
+  .news-box {
+    flex: 0 0 calc(33.333% - 3rem);
+  }
+}
+
+/* 1200px */
+@media only screen and (max-width: 75em) {
+}
+
+/* 1140 Custom breakpoint */
+@media only screen and (max-width: 71.25em) {
+  .container {
+    padding: 0 3rem;
+  }
+}
+
+/* 900px */
+@media only screen and (max-width: 56.25em) {
+  .news-list {
+    padding-bottom: 6rem;
+  }
+
+  .news-list__container {
+    display: block;
+  }
+
+  .news-list__container > *:not(:last-child) {
+    margin-bottom: 2.5rem;
+  }
+}
+
+/* 768px */
+@media only screen and (max-width: 48em) {
+  .news-selector {
+    display: flex;
+  }
+
+  .news-select {
+    margin: auto;
+  }
+
+  .header,
+  .tabs {
+    margin-bottom: 4rem;
+  }
+
+  .header .header__logo {
+    font-size: 2.4rem;
+  }
+}
+
+/* 600px */
+@media only screen and (max-width: 37.5em) {
+  html {
+    font-size: 56.25%;
+  }
+}
+
+/* 480px */
+@media only screen and (max-width: 30em) {
+}
