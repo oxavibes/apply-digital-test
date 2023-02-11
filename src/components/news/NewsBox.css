@@ -15,6 +15,13 @@
 
 .news-box__body {
   flex: 1;
+}
+
+.news-box__link {
+  all: unset;
+
+  display: block;
+  cursor: pointer;
   padding: 1.6rem 2.6rem;
 }
 
