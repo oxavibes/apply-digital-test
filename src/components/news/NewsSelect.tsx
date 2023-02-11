@@ -2,8 +2,8 @@ import "./NewsSelect.css";
 
 export default function NewsSelector() {
   return (
-    <select className="news-select">
-      <option value="none" selected disabled hidden>
+    <select className="news-select" defaultValue="none">
+      <option value="none" disabled hidden>
         Select your news
       </option>
       <option value="angular"> Angular</option>
