@@ -1,7 +1,8 @@
+import { DateTime } from "luxon";
+
 import { MouseEvent } from "react";
 
 import { Icon } from "@iconify/react";
-import { formatTimeAgo } from "../utils";
 
 import { INewsType } from "../../types/news";
 
@@ -21,7 +22,7 @@ export default function NewsBox({
   const allNews = useNewsStore((state) => state.allNews);
   const toggleFavourite = useNewsStore((state) => state.toggleFavourite);
 
-  const formattedDate = formatTimeAgo(new Date(created_at));
+  const formattedDate = DateTime.fromISO(created_at).toRelative();
 
   const handleClickLike = (e: MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();

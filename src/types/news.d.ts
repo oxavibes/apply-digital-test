@@ -3,7 +3,7 @@ export type INewsType = {
   story_id?: number,
   story_title: string,
   story_url: string,
-  created_at: Date,
+  created_at: renderToString,
   innerRef?: any
   objectID?: string,
   isFavourite?: boolean

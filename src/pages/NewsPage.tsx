@@ -132,7 +132,7 @@ export default function NewsPage() {
               ({ author, story_id, story_title, story_url, isFavourite, created_at, objectID }: INewsType, index) => {
                 const lastElement = index === allNews.length - 1;
 
-                const key = story_id + objectID;
+                const key = story_id;
 
                 return (
                   <NewsBox
@@ -152,7 +152,7 @@ export default function NewsPage() {
           {activeTab === "favs" &&
             favNews.map(
               ({ author, story_id, story_title, story_url, isFavourite, created_at, objectID }: INewsType) => {
-                const key = story_id + objectID;
+                const key = story_id;
 
                 return (
                   <NewsBox

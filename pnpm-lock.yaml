@@ -2,10 +2,12 @@ lockfileVersion: 5.4
 
 specifiers:
   '@iconify/react': ^4.1.0
+  '@types/luxon': ^3.2.0
   '@types/react': ^18.0.27
   '@types/react-dom': ^18.0.10
   '@vitejs/plugin-react': ^3.1.0
   immer: ^9.0.19
+  luxon: ^3.2.1
   react: ^18.2.0
   react-dom: ^18.2.0
   typescript: ^4.9.3
@@ -13,12 +15,14 @@ specifiers:
   zustand: ^4.3.3
 
 dependencies:
+  luxon: 3.2.1
   react: 18.2.0
   react-dom: 18.2.0_react@18.2.0
   zustand: 4.3.3_immer@9.0.19+react@18.2.0
 
 devDependencies:
   '@iconify/react': 4.1.0_react@18.2.0
+  '@types/luxon': 3.2.0
   '@types/react': 18.0.27
   '@types/react-dom': 18.0.10
   '@vitejs/plugin-react': 3.1.0_vite@4.1.1
@@ -504,6 +508,10 @@ packages:
       '@jridgewell/sourcemap-codec': 1.4.14
     dev: true
 
+  /@types/luxon/3.2.0:
+    resolution: {integrity: sha512-lGmaGFoaXHuOLXFvuju2bfvZRqxAqkHPx9Y9IQdQABrinJJshJwfNCKV+u7rR3kJbiqfTF/NhOkcxxAFrObyaA==}
+    dev: true
+
   /@types/prop-types/15.7.5:
     resolution: {integrity: sha512-JCB8C6SnDoQf0cNycqd/35A7MjcnK+ZTqE7judS6o7utxUCg6imJg3QK2qzHKszlTjcj2cn+NwMB2i96ubpj7w==}
     dev: true
@@ -716,6 +724,11 @@ packages:
     dependencies:
       yallist: 3.1.1
     dev: true
+
+  /luxon/3.2.1:
+    resolution: {integrity: sha512-QrwPArQCNLAKGO/C+ZIilgIuDnEnKx5QYODdDtbFaxzsbZcc/a7WFq7MhsVYgRlwawLtvOUESTlfJ+hc/USqPg==}
+    engines: {node: '>=12'}
+    dev: false
 
   /magic-string/0.27.0:
     resolution: {integrity: sha512-8UnnX2PeRAPZuN12svgR9j7M1uWMovg/CEnIwIG0LFkXSJJe4PdfUGiTGl8V9bsBHFUtfVINcSyYxd7q+kx9fA==}
