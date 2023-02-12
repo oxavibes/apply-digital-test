@@ -5,6 +5,7 @@ specifiers:
   '@types/react': ^18.0.27
   '@types/react-dom': ^18.0.10
   '@vitejs/plugin-react': ^3.1.0
+  immer: ^9.0.19
   react: ^18.2.0
   react-dom: ^18.2.0
   typescript: ^4.9.3
@@ -14,13 +15,14 @@ specifiers:
 dependencies:
   react: 18.2.0
   react-dom: 18.2.0_react@18.2.0
-  zustand: 4.3.3_react@18.2.0
+  zustand: 4.3.3_immer@9.0.19+react@18.2.0
 
 devDependencies:
   '@iconify/react': 4.1.0_react@18.2.0
   '@types/react': 18.0.27
   '@types/react-dom': 18.0.10
   '@vitejs/plugin-react': 3.1.0_vite@4.1.1
+  immer: 9.0.19
   typescript: 4.9.5
   vite: 4.1.1
 
@@ -679,6 +681,9 @@ packages:
       function-bind: 1.1.1
     dev: true
 
+  /immer/9.0.19:
+    resolution: {integrity: sha512-eY+Y0qcsB4TZKwgQzLaE/lqYMlKhv5J9dyd2RhhtGhNo2njPXDqU9XPfcNfa3MIDsdtZt5KlkIsirlo4dHsWdQ==}
+
   /is-core-module/2.11.0:
     resolution: {integrity: sha512-RRjxlvLDkD1YJwDbroBHMb+cukurkDWNyHx7D3oNB5x9rb5ogcksMC5wHCadcXoo67gVr/+3GFySh3134zi6rw==}
     dependencies:
@@ -883,7 +888,7 @@ packages:
     resolution: {integrity: sha512-a4UGQaWPH59mOXUYnAG2ewncQS4i4F43Tv3JoAM+s2VDAmS9NsK8GpDMLrCHPksFT7h3K6TOoUNn2pb7RoXx4g==}
     dev: true
 
-  /zustand/4.3.3_react@18.2.0:
+  /zustand/4.3.3_immer@9.0.19+react@18.2.0:
     resolution: {integrity: sha512-x2jXq8S0kfLGNwGh87nhRfEc2eZy37tSatpSoSIN+O6HIaBhgQHSONV/F9VNrNcBcKQu/E80K1DeHDYQC/zCrQ==}
     engines: {node: '>=12.7.0'}
     peerDependencies:
@@ -895,6 +900,7 @@ packages:
       react:
         optional: true
     dependencies:
+      immer: 9.0.19
       react: 18.2.0
       use-sync-external-store: 1.2.0_react@18.2.0
     dev: false
