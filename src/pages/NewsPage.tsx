@@ -11,24 +11,26 @@ import NewsSelect from "../components/news/NewsSelect";
 import "./NewsPage.css";
 
 export default function NewsPage() {
-  const { allNews, favNews, activeQuery, activeTab, page, hitsPerPage, isLoading, setProp } = useNewsStore(
-    (state) => ({
-      allNews: state.allNews,
-      favNews: state.favNews,
+  const { allNews, favNews, activeQuery, activeTab, page, hitsPerPage, isLoading, checkFavouriteNews, setProp } =
+    useNewsStore(
+      (state) => ({
+        allNews: state.allNews,
+        favNews: state.favNews,
 
-      activeTab: state.activeTab,
-      activeQuery: state.activeQuery,
+        activeTab: state.activeTab,
+        activeQuery: state.activeQuery,
 
-      page: state.page,
-      hitsPerPage: state.hitsPerPage,
+        page: state.page,
+        hitsPerPage: state.hitsPerPage,
 
-      loadedNews: state.loadedNews,
-      isLoading: state.isLoading,
+        loadedNews: state.loadedNews,
+        isLoading: state.isLoading,
 
-      setProp: state.setProp,
-    }),
-    shallow
-  );
+        setProp: state.setProp,
+        checkFavouriteNews: state.checkFavouriteNews,
+      }),
+      shallow
+    );
 
   let lastItemRef = useRef(null);
 
@@ -46,7 +48,7 @@ export default function NewsPage() {
       .then((data) => {
         let hits: Array<INewsType> = data.hits
           .filter(
-            ({ author, story_title, story_url, created_at }: INewsType) =>
+            ({ author, story_id, story_title, story_url, created_at }: INewsType) =>
               !!author && !!story_title && !!story_url && !!created_at
           )
           .map(({ author, story_id, story_title, story_url, created_at, objectID }: INewsType) => ({
@@ -58,10 +60,18 @@ export default function NewsPage() {
             objectID,
           }));
 
-        //Duplicated news are coming from the API
-        const uniqueNews = hits.filter((item) => hits.map((news) => item.story_id !== news.story_id));
+        //The API is returning duplicated posts
+        const uniqueHits = hits.reduce(
+          (accumulator: INewsType[], current: INewsType) => {
+            if (accumulator.find((item: INewsType) => item.story_id === current.story_id)) return accumulator;
+            return [...accumulator, current];
+          },
+          [...allNews]
+        );
 
-        setProp("allNews", [...allNews, ...uniqueNews]);
+        setProp("allNews", uniqueHits);
+
+        checkFavouriteNews();
       })
       .catch((error) => {
         console.error("Error:", error);
@@ -75,8 +85,7 @@ export default function NewsPage() {
     if (activeQuery !== "none" && isLoading === false) {
       const timeoutId = setTimeout(() => {
         fetchNews();
-      }, 200);
-
+      }, 400);
       return () => clearTimeout(timeoutId);
     }
   }, [fetchNews]);
@@ -98,11 +107,6 @@ export default function NewsPage() {
       };
     }
   }, [lastItemRef.current]);
-
-  useEffect(() => {
-    const allFavs = allNews.filter((item) => item.isFavourite);
-    setProp("favNews", allFavs);
-  }, [activeTab]);
 
   return (
     <div className="container">
@@ -128,45 +132,37 @@ export default function NewsPage() {
       <section className="news-list">
         <div className="news-list__container">
           {activeTab === "all" &&
-            allNews.map(
-              ({ author, story_id, story_title, story_url, isFavourite, created_at, objectID }: INewsType, index) => {
-                const lastElement = index === allNews.length - 1;
+            allNews.map(({ author, story_id, story_title, story_url, isFavourite, created_at }: INewsType, index) => {
+              const lastElement = index === allNews.length - 1;
 
-                const key = story_id;
-
-                return (
-                  <NewsBox
-                    key={key}
-                    author={author}
-                    story_id={story_id}
-                    story_url={story_url}
-                    story_title={story_title}
-                    isFavourite={isFavourite}
-                    created_at={created_at}
-                    innerRef={lastElement ? lastItemRef : null}
-                  ></NewsBox>
-                );
-              }
-            )}
+              return (
+                <NewsBox
+                  key={story_id}
+                  author={author}
+                  story_id={story_id}
+                  story_url={story_url}
+                  story_title={story_title}
+                  isFavourite={isFavourite}
+                  created_at={created_at}
+                  innerRef={lastElement ? lastItemRef : null}
+                ></NewsBox>
+              );
+            })}
 
           {activeTab === "favs" &&
-            favNews.map(
-              ({ author, story_id, story_title, story_url, isFavourite, created_at, objectID }: INewsType) => {
-                const key = story_id;
-
-                return (
-                  <NewsBox
-                    key={key}
-                    author={author}
-                    story_id={story_id}
-                    story_url={story_url}
-                    story_title={story_title}
-                    isFavourite={isFavourite}
-                    created_at={created_at}
-                  ></NewsBox>
-                );
-              }
-            )}
+            favNews.map(({ author, story_id, story_title, story_url, isFavourite, created_at }: INewsType) => {
+              return (
+                <NewsBox
+                  key={story_id}
+                  author={author}
+                  story_id={story_id}
+                  story_url={story_url}
+                  story_title={story_title}
+                  isFavourite={isFavourite}
+                  created_at={created_at}
+                ></NewsBox>
+              );
+            })}
         </div>
 
         {(activeQuery === "none" ||

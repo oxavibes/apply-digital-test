@@ -1,4 +1,5 @@
 import { DateTime } from "luxon";
+import { shallow } from "zustand/shallow";
 
 import { MouseEvent } from "react";
 
@@ -19,17 +20,43 @@ export default function NewsBox({
   isFavourite,
   innerRef,
 }: INewsType) {
-  const allNews = useNewsStore((state) => state.allNews);
-  const toggleFavourite = useNewsStore((state) => state.toggleFavourite);
+  const { allNews, favNews, activeTab, addFavourite, toggleFavourite, removeFavourite } = useNewsStore(
+    (state) => ({
+      allNews: state.allNews,
+      favNews: state.favNews,
+
+      activeTab: state.activeTab,
+
+      addFavourite: state.addFavourite,
+      toggleFavourite: state.toggleFavourite,
+      removeFavourite: state.removeFavourite,
+    }),
+    shallow
+  );
 
   const formattedDate = DateTime.fromISO(created_at).toRelative();
 
   const handleClickLike = (e: MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
 
-    const index = allNews.findIndex((news) => story_id === news.story_id);
+    const favExists = favNews.find((news) => story_id === news.story_id);
 
-    toggleFavourite(index);
+    if (!favExists) {
+      const index = allNews.findIndex((news) => story_id === news.story_id);
+
+      const favourite = { ...allNews[index], isFavourite: true };
+
+      addFavourite(favourite);
+
+      toggleFavourite(index, true);
+    } else {
+      const index = allNews.findIndex((news) => story_id === news.story_id);
+
+      removeFavourite(favExists);
+
+      //findIndex returns -1 if the items doesn't exists
+      if (index !== -1) toggleFavourite(index, false);
+    }
   };
 
   return (

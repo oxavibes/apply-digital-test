@@ -5,12 +5,13 @@ import { useNewsStore } from "../../store";
 import "./NewsSelect.css";
 
 export default function NewsSelector() {
+  const allNews = useNewsStore((state) => state.allNews);
+  const favNews = useNewsStore((state) => state.favNews);
   const activeQuery = useNewsStore((state) => state.activeQuery);
   const setProp = useNewsStore((state) => state.setProp);
 
   const handleOnChange = (e: ChangeEvent<HTMLSelectElement>) => {
-    e.preventDefault();
-
+    setProp("page", 0);
     setProp("allNews", []);
     setProp("activeQuery", e.target.value);
   };
