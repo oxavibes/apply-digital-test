@@ -17,3 +17,5 @@
   background: url("https://api.iconify.design/material-symbols/keyboard-arrow-down.svg") white no-repeat
     calc(100% - 10px);
 }
+
+/* Cannot apply style to select's option - See https://stackoverflow.com/a/7208825 */
